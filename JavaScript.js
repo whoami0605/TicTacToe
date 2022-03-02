@@ -7,9 +7,21 @@ document.getElementById("container").onclick = event => fieldClicked(event.targe
 // Diese Funktion wird bei einem Klick auf dem Container aufgerufen,
 // als Parameter wird die FieldId des geklickten Fields als String übergeben.
 function fieldClicked(fieldId) {
-    alert("not yet implemented!");
 
-    // TODO: 
+    if (player === "X") {
+        document.getElementById(fieldId).innerText = "X";
+        changePlayer();
+        checkForWinner("X")
+    }
+    else if(player === "O") {
+        document.getElementById(fieldId).innerText = "O";
+        changePlayer();
+        checkForWinner("O")
+    }
+
+
+
+    // TODO:
     // Implementiere den fehlenden Code in diese Funktion.
     // Verwende hierzu die teils schon implementierten 
     // Funktionen checkForWinner(), getFieldContent(), isFieldSet() und checkForGameOver()
@@ -38,8 +50,8 @@ function checkForWinner(player) {
 }
 
 function checkForWinningRow(fieldId1, fieldId2, fieldId3, player) {
-    return getFieldContent(fieldId1) === getFieldContent(fieldId2) && 
-        getFieldContent(fieldId2) === getFieldContent(fieldId3) && 
+    return getFieldContent(fieldId1) === getFieldContent(fieldId2) &&
+        getFieldContent(fieldId2) === getFieldContent(fieldId3) &&
         getFieldContent(fieldId1) === player;
 }
 
