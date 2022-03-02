@@ -3,7 +3,7 @@
 let player = "X"
 
 // Registriere die fieldClicked()-Funktion auf den Feldern
-document.getElementById("container").onclick = event => fieldClicked(event.target.id);
+document.getElementById("container").addEventListener("click", () => fieldClicked(event.target.id));
 
 // Diese Funktion wird bei einem Klick auf dem Container aufgerufen,
 // als Parameter wird die FieldId des geklickten Fields als String übergeben.
