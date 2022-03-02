@@ -8,17 +8,19 @@ document.getElementById("container").onclick = event => fieldClicked(event.targe
 // als Parameter wird die FieldId des geklickten Fields als String übergeben.
 function fieldClicked(fieldId) {
 
-    if (player === "X") {
-        document.getElementById(fieldId).innerText = "X";
-        changePlayer();
-        checkForWinner("X")
-    }
-    else if(player === "O") {
-        document.getElementById(fieldId).innerText = "O";
-        changePlayer();
-        checkForWinner("O")
+    if (!checkForWinner(player) && isFieldSet(fieldId) === false && !checkForGameOver()) {
+        document.getElementById(fieldId).innerText = player;
+        if (checkForWinner(player)) {
+            document.getElementById("messageBox").innerText = "Player " + player + " Won!";
+        } else {
+            changePlayer();
+        }
     }
 
+
+    if(checkForGameOver()){
+        document.getElementById("messageBox").innerText = "GAME OVER";
+     }
 
 
     // TODO:
@@ -29,7 +31,7 @@ function fieldClicked(fieldId) {
 }
 
 function changePlayer() {
-    if (player == "X") {
+    if (player === "X") {
         player = "O"
     } else {
         player = "X"
@@ -60,10 +62,14 @@ function getFieldContent(fieldId) {
 }
 
 function isFieldSet(fieldId) {
-    alert("not yet implemented!");
-    return false; //TODO: überprüfe, ob das entsprechende field nicht leer ist
-}
+    if (document.getElementById(fieldId).innerText === "X" || document.getElementById(fieldId).innerText === "O") {
+        return true;
 
+    } else {
+        return false;
+    }
+
+}
 function checkForGameOver() {
     return isFieldSet("11") && isFieldSet("12") && isFieldSet("13") &&
         isFieldSet("21") && isFieldSet("22") && isFieldSet("23") &&
