@@ -1,5 +1,6 @@
+"use strict";
 // Die Variable enthält den Spieler, welcher am Zug ist. ["X", "O"]
-player = "X"
+let player = "X"
 
 // Registriere die fieldClicked()-Funktion auf den Feldern
 document.getElementById("container").onclick = event => fieldClicked(event.target.id);
