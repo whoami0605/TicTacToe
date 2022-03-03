@@ -16,8 +16,9 @@ function fieldClicked(fieldId) {
         } else {
             changePlayer();
         }
+    } else {
+        onclick(window.location.reload());
     }
-
 
     if(checkForGameOver()){
         document.getElementById("messageBox").innerText = "GAME OVER";
